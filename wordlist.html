@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>Word List</title>
+<script type="text/javascript" charset="utf-8" src="./wordlist.js"></script>
+<style>
+#header, #content, #footer{ border-style: solid; border-width: 1px; border-radius:5px; margin : 5px}
+question{display:block; border-style: dotted; border-width: 1px; border-radius:5px; margin : 5px}
+group{vertical-align: middle; display:inline-block; border-style: dotted; border-width: 1px; border-radius:5px; margin : 5px}
+button{display:inline; height:30px; margin : 5px 3px 5px 3px; border-radius:5px; }
+span{vertical-align: middle; display:inline-block; margin-left: 5px; margin-right: 5px}
+</style>
+</head>
+<body>
+<form onclick="return false;">
+	<div id="header" style="width: auto; padding: 5px">
+		<label style="float: left;">
+			<input type="submit" value="Hide" onclick="hide()">
+		</label>
+		<span>Stars: </span>
+		<group>
+			<label><input type="checkbox" name="star" value="Star_1">Star 1</label>
+			<label><input type="checkbox" name="star" value="Star_2">Star 2</label>
+			<label><input type="checkbox" name="star" value="Star_3">Star 3</label>
+		</group>
+		<span>Part of Speech: </span>
+		<group>
+			<label><input type="checkbox" name="part" value="Verb">Verb</label>
+			<label><input type="checkbox" name="part" value="Noun">Noun</label>
+			<label><input type="checkbox" name="part" value="Adj">Adj</label>
+			<label><input type="checkbox" name="part" value="Other">Other</label>
+		</group>
+		<label style="float: right; "><input type="submit" value="Generate" onclick="generate()"></label>
+	</div>
+	<hr>
+	<div id="content" style="width: auto; ">
+		<question>
+			<choice>
+				<button></button>
+				<button></button>
+				<button></button>
+				<button></button>
+				<button></button>
+			</choice>
+			<answer></answer>
+		</question>
+		<question>
+			<choice>
+				<button></button>
+				<button></button>
+				<button></button>
+				<button></button>
+				<button></button>
+			</choice>
+			<answer></answer>
+		</question>
+		<question>
+			<choice>
+				<button></button>
+				<button></button>
+				<button></button>
+				<button></button>
+				<button></button>
+			</choice>
+			<answer></answer>
+		</question>
+		<question>
+			<choice>
+				<button></button>
+				<button></button>
+				<button></button>
+				<button></button>
+				<button></button>
+			</choice>
+			<answer></answer>
+		</question>
+		<question>
+			<choice>
+				<button></button>
+				<button></button>
+				<button></button>
+				<button></button>
+				<button></button>
+			</choice>
+			<answer></answer>
+		</question>
+	</div>
+	<hr>
+	<div id="footer" style="width: auto; overflow: auto">
+		<button id="okay" style="width:40%; float:left">Okay</button><button id="next" style="width:40%; float:right">Next</button>
+	</div>
+</form>
+<script type="text/javascript">
+	var question = document.querySelector("#content").querySelectorAll("question");
+	question.forEach((e,i)=>{
+		e.choice=e.querySelectorAll("button");
+		e.answer=e.querySelector("answer");
+	});
+	fillForm(choices,answers);
+	
+	function fillForm(choices,answers){
+		question.forEach((e,i)=>{
+			e.answer.innerText=answers[i];
+			e.choice.forEach((c,j)=>{c.innerText=choices[j]})
+		});
+	}
+	function generate(){}
+	function hide(){document.querySelector('#header').style=document.querySelector('hr').style='display:none';}
+	function generate(){}
+	function generate(){}
+
+	
+</script>
+</body>
+</html>
