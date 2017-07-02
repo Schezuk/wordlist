@@ -75,7 +75,7 @@ label input:checked + span {
 			for(j=0;j<choices.length;j++)question[i].choice.appendChild(fillChoice(choices[j],i))
 			/*e.choice.forEach((c,j)=>{c.querySelector("span").innerText=choices[j]})*/
 			question[i].answer.innerText=answers[i];
-		});
+		};
 	}
 	function fillChoice(choice, question){
 		var label = document.createElement("label");
