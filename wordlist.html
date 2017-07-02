@@ -4,16 +4,16 @@
 <script type="text/javascript" charset="utf-8" src="./wordlist.js"></script>
 <style>
 #header, #content, #footer{ border-style: solid; border-width: 1px; border-radius:5px; margin : 5px}
-question{display:block; border-style: dotted; border-width: 1px; border-radius:5px; margin : 5px}
-group{vertical-align: middle; display:inline-block; border-style: dotted; border-width: 1px; border-radius:5px; margin : 5px}
+question{display:block; border-style: dotted; border-width: 1px; border-radius:5px; margin : 5px;padding: 5px}
+group{vertical-align: middle; display:inline-block; border-style: dotted; border-width: 1px; border-radius:5px; margin : 5px;padding: 5px}
 button{display:inline; height:30px; margin : 5px 3px 5px 3px; border-radius:5px; }
-span{vertical-align: middle; display:inline-block; margin-left: 5px; margin-right: 5px}
+span{ display:inline-block; margin-left: 5px; margin-right: 5px}
 
 label span{
     display:inline;
     width:auto;
 	min-width: 30px;
-    margin:5px;
+    margin:0px;
     background-color:#DDDDDD;
     border-radius:5px;
     border:2px #898989;
@@ -29,80 +29,81 @@ label input:checked + span {
 </style>
 </head>
 <body>
-<form onclick="return ()=>{}()"><!--return false;-->
+<form>
 	<div id="header" style="width: auto; padding: 5px">
-		<input type="submit" value="Hide" style="float: left;" onclick="hide()">
+		<button id="okay" style="width:10%; float:left" onclick="hide();return false;">Hide</button>
 		<span>Stars: </span>
 		<group>
-			<label><input type="checkbox" name="star" value="Star_1">Star 1</label>
-			<label><input type="checkbox" name="star" value="Star_2">Star 2</label>
-			<label><input type="checkbox" name="star" value="Star_3">Star 3</label>
+			<label><input type="checkbox" name="star" value="Star_1"><span>Star 1</span></label>
+			<label><input type="checkbox" name="star" value="Star_2"><span>Star 2</span></label>
+			<label><input type="checkbox" name="star" value="Star_3"><span>Star 3</span></label>
 		</group>
 		<span>Part of Speech: </span>
 		<group>
-			<label><input type="checkbox" name="part" value="Verb">Verb</label>
-			<label><input type="checkbox" name="part" value="Noun">Noun</label>
-			<label><input type="checkbox" name="part" value="Adj">Adj</label>
-			<label><input type="checkbox" name="part" value="Other">Other</label>
+			<label><input type="checkbox" name="part" value="Verb" ><span>Verb</span></label>
+			<label><input type="checkbox" name="part" value="Noun" ><span>Noun</span></label>
+			<label><input type="checkbox" name="part" value="Adj"  ><span>Adj</span></label>
+			<label><input type="checkbox" name="part" value="Other"><span>Other</span></label>
 		</group>
-		<input type="submit" value="Generate" style="float: right;" onclick="generate()">
+		<button id="okay" style="width:10%; float:right" onclick="generate();return false;">Generate</button>
 	</div>
 	<hr>
 	<div id="content" style="width: auto; ">
 		<question>
 			<choice>
-				<label class="blue"><input type="radio" name="question_1"><span></span></label>
-				<label class="blue"><input type="radio" name="question_1"><span></span></label>
-				<label class="blue"><input type="radio" name="question_1"><span></span></label>
-				<label class="blue"><input type="radio" name="question_1"><span></span></label>
-				<label class="blue"><input type="radio" name="question_1"><span></span></label>
+				<label class="blue"><input type="radio" name="1" onclick=""><span></span></label>
+				<label class="blue"><input type="radio" name="1"><span></span></label>
+				<label class="blue"><input type="radio" name="1"><span></span></label>
+				<label class="blue"><input type="radio" name="1"><span></span></label>
+				<label class="blue"><input type="radio" name="1"><span></span></label>
 			</choice>
 			<answer></answer>
 		</question>
 		<question>
 			<choice>
-				<label class="blue"><input type="radio" name="question_2"><span></span></label>
-				<label class="blue"><input type="radio" name="question_2"><span></span></label>
-				<label class="blue"><input type="radio" name="question_2"><span></span></label>
-				<label class="blue"><input type="radio" name="question_2"><span></span></label>
-				<label class="blue"><input type="radio" name="question_2"><span></span></label>
+				<label class="blue"><input type="radio" name="2"><span></span></label>
+				<label class="blue"><input type="radio" name="2"><span></span></label>
+				<label class="blue"><input type="radio" name="2"><span></span></label>
+				<label class="blue"><input type="radio" name="2"><span></span></label>
+				<label class="blue"><input type="radio" name="2"><span></span></label>
 			</choice>
 			<answer></answer>
 		</question>
 		<question>
 			<choice>
-				<label class="blue"><input type="radio" name="question_3"><span></span></label>
-				<label class="blue"><input type="radio" name="question_3"><span></span></label>
-				<label class="blue"><input type="radio" name="question_3"><span></span></label>
-				<label class="blue"><input type="radio" name="question_3"><span></span></label>
-				<label class="blue"><input type="radio" name="question_3"><span></span></label>
+				<label class="blue"><input type="radio" name="3"><span></span></label>
+				<label class="blue"><input type="radio" name="3"><span></span></label>
+				<label class="blue"><input type="radio" name="3"><span></span></label>
+				<label class="blue"><input type="radio" name="3"><span></span></label>
+				<label class="blue"><input type="radio" name="3"><span></span></label>
 			</choice>
 			<answer></answer>
 		</question>
 		<question>
 			<choice>
-				<label class="blue"><input type="radio" name="question_4"><span></span></label>
-				<label class="blue"><input type="radio" name="question_4"><span></span></label>
-				<label class="blue"><input type="radio" name="question_4"><span></span></label>
-				<label class="blue"><input type="radio" name="question_4"><span></span></label>
-				<label class="blue"><input type="radio" name="question_4"><span></span></label>
+				<label class="blue"><input type="radio" name="4"><span></span></label>
+				<label class="blue"><input type="radio" name="4"><span></span></label>
+				<label class="blue"><input type="radio" name="4"><span></span></label>
+				<label class="blue"><input type="radio" name="4"><span></span></label>
+				<label class="blue"><input type="radio" name="4"><span></span></label>
 			</choice>
 			<answer></answer>
 		</question>
 		<question>
 			<choice>
-				<label class="blue"><input type="radio" name="question_5"><span></span></label>
-				<label class="blue"><input type="radio" name="question_5"><span></span></label>
-				<label class="blue"><input type="radio" name="question_5"><span></span></label>
-				<label class="blue"><input type="radio" name="question_5"><span></span></label>
-				<label class="blue"><input type="radio" name="question_5"><span></span></label>
+				<label class="blue"><input type="radio" name="5"><span></span></label>
+				<label class="blue"><input type="radio" name="5"><span></span></label>
+				<label class="blue"><input type="radio" name="5"><span></span></label>
+				<label class="blue"><input type="radio" name="5"><span></span></label>
+				<label class="blue"><input type="radio" name="5"><span></span></label>
 			</choice>
 			<answer></answer>
 		</question>
 	</div>
 	<hr>
 	<div id="footer" style="width: auto; overflow: auto">
-		<button id="okay" style="width:40%; float:left">Okay</button><button id="next" style="width:40%; float:right">Next</button>
+		<button id="okay" style="width:40%; float:left" onclick="check();return false;">Check</button>
+		<button id="next" style="width:40%; float:right" onclick="next();return false;">Next</button>
 	</div>
 </form>
 <script type="text/javascript">
@@ -119,10 +120,14 @@ label input:checked + span {
 			e.choice.forEach((c,j)=>{c.querySelector("span").innerText=choices[j]})
 		});
 	}
+	
+	function hide(){
+		document.querySelector('#header').style='display:none';
+		document.querySelector('#header+hr').style='display:none';
+	}
 	function generate(){}
-	function hide(){document.querySelector('#header').style=document.querySelector('hr').style='display:none';}
-	function generate(){}
-	function generate(){}
+	function check(){console.log("X");return false;}
+	function next(){}
 
 	
 </script>
