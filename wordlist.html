@@ -13,18 +13,18 @@ label span{
     display:inline;
     width:auto;
 	min-width: 30px;
-    margin:0px;
+    margin:5px 5px 5px 0px ;
     background-color:#DDDDDD;
     border-radius:5px;
     border:2px #898989;
-	border-style: none solid solid none;
     overflow:auto;
+	border-style: none solid solid none;
+	color: #000000;
 }
 label input{display: none}
 label input:checked + span {
-	border:2px #898989;
 	border-style: solid none none solid;
-    color:#F7F7F7;
+    color:#FFFFFF;
 }
 </style>
 </head>
@@ -48,57 +48,12 @@ label input:checked + span {
 		<button id="okay" style="width:10%; float:right" onclick="generate();return false;">Generate</button>
 	</div>
 	<hr>
-	<div id="content" style="width: auto; ">
-		<question>
-			<choice>
-				<label class="blue"><input type="radio" name="1" onclick=""><span></span></label>
-				<label class="blue"><input type="radio" name="1"><span></span></label>
-				<label class="blue"><input type="radio" name="1"><span></span></label>
-				<label class="blue"><input type="radio" name="1"><span></span></label>
-				<label class="blue"><input type="radio" name="1"><span></span></label>
-			</choice>
-			<answer></answer>
-		</question>
-		<question>
-			<choice>
-				<label class="blue"><input type="radio" name="2"><span></span></label>
-				<label class="blue"><input type="radio" name="2"><span></span></label>
-				<label class="blue"><input type="radio" name="2"><span></span></label>
-				<label class="blue"><input type="radio" name="2"><span></span></label>
-				<label class="blue"><input type="radio" name="2"><span></span></label>
-			</choice>
-			<answer></answer>
-		</question>
-		<question>
-			<choice>
-				<label class="blue"><input type="radio" name="3"><span></span></label>
-				<label class="blue"><input type="radio" name="3"><span></span></label>
-				<label class="blue"><input type="radio" name="3"><span></span></label>
-				<label class="blue"><input type="radio" name="3"><span></span></label>
-				<label class="blue"><input type="radio" name="3"><span></span></label>
-			</choice>
-			<answer></answer>
-		</question>
-		<question>
-			<choice>
-				<label class="blue"><input type="radio" name="4"><span></span></label>
-				<label class="blue"><input type="radio" name="4"><span></span></label>
-				<label class="blue"><input type="radio" name="4"><span></span></label>
-				<label class="blue"><input type="radio" name="4"><span></span></label>
-				<label class="blue"><input type="radio" name="4"><span></span></label>
-			</choice>
-			<answer></answer>
-		</question>
-		<question>
-			<choice>
-				<label class="blue"><input type="radio" name="5"><span></span></label>
-				<label class="blue"><input type="radio" name="5"><span></span></label>
-				<label class="blue"><input type="radio" name="5"><span></span></label>
-				<label class="blue"><input type="radio" name="5"><span></span></label>
-				<label class="blue"><input type="radio" name="5"><span></span></label>
-			</choice>
-			<answer></answer>
-		</question>
+	<div id="content" style="width: auto;" >
+		<question><choice></choice><answer></answer></question>
+		<question><choice></choice><answer></answer></question>
+		<question><choice></choice><answer></answer></question>
+		<question><choice></choice><answer></answer></question>
+		<question><choice></choice><answer></answer></question>
 	</div>
 	<hr>
 	<div id="footer" style="width: auto; overflow: auto">
@@ -108,17 +63,27 @@ label input:checked + span {
 </form>
 <script type="text/javascript">
 	var question = document.querySelector("#content").querySelectorAll("question");
-	question.forEach((e,i)=>{
-		e.choice=e.querySelectorAll("label");
+	question.forEach((e,i)=>{		
+		e.choice=e.querySelector("choice");
 		e.answer=e.querySelector("answer");
 	});
 	fillForm(choices,answers);
 	
 	function fillForm(choices,answers){
 		question.forEach((e,i)=>{
+			while (e.choice.firstChild) e.choice.removeChild(e.choice.firstChild);
+			choices.forEach((c)=>{e.choice.appendChild(fillChoice(c,i))})
+			/*e.choice.forEach((c,j)=>{c.querySelector("span").innerText=choices[j]})*/
 			e.answer.innerText=answers[i];
-			e.choice.forEach((c,j)=>{c.querySelector("span").innerText=choices[j]})
 		});
+	}
+	function fillChoice(choice, question){
+		var label = document.createElement("label");
+		var input = document.createElement("input");
+		input.type="radio";input.name=`${question}`;label.appendChild(input);
+		var span  = document.createElement("span");
+		span.innerText=choice;label.appendChild(span);
+		return label;
 	}
 	
 	function hide(){
@@ -126,7 +91,7 @@ label input:checked + span {
 		document.querySelector('#header+hr').style='display:none';
 	}
 	function generate(){}
-	function check(){console.log("X");return false;}
+	function check(){;return false;}
 	function next(){}
 
 	
