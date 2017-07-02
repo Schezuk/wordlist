@@ -63,18 +63,18 @@ label input:checked + span {
 </form>
 <script type="text/javascript">
 	var question = document.querySelector("#content").querySelectorAll("question");
-	question.forEach((e,i)=>{		
-		e.choice=e.querySelector("choice");
-		e.answer=e.querySelector("answer");
+	for(i=0;i<question.length;i++)
+		question[i].choice=question[i].querySelector("choice");
+		question[i].answer=question[i].querySelector("answer");
 	});
 	fillForm(choices,answers);
 	
 	function fillForm(choices,answers){
-		question.forEach((e,i)=>{
-			while (e.choice.firstChild) e.choice.removeChild(e.choice.firstChild);
-			choices.forEach((c)=>{e.choice.appendChild(fillChoice(c,i))})
+		for(i=0;i<question.length;i++){
+			while (question[i].choice.firstChild) question[i].choice.removeChild(question[i].choice.firstChild);
+			choices.forEach((c)=>{question[i].choice.appendChild(fillChoice(c,i))})
 			/*e.choice.forEach((c,j)=>{c.querySelector("span").innerText=choices[j]})*/
-			e.answer.innerText=answers[i];
+			question[i].answer.innerText=answers[i];
 		});
 	}
 	function fillChoice(choice, question){
